@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>扩展一个Layui模块</title>
+	</head>
+	<script src="layui/layui.js"></script>
+	<script>
+		layui.config({
+			base: 'js/'
+		})
+
+		layui.use('exhello', function() {
+			var test = layui.exhello;
+
+			test.hello();
+		})
+	</script>
+
+	<body>
+	</body>
+
+</html>
