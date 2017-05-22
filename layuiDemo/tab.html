@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>tab学习</title>
+		<link rel="stylesheet" href="layui/css/layui.css" />
+	</head>
+
+	<body>
+		<div class="layui-tab" lay-filter="tabtest">
+			<ul class="layui-tab-title">
+				<li class="layui-this" lay-id="1">春</li>
+				<li lay-id="2">夏</li>
+				<li lay-id="3">秋</li>
+				<li lay-id="4">冬</li>
+			</ul>
+
+			<div class="layui-tab-content">
+				<div class="layui-tab-item layui-show">1</div>
+				<div class="layui-tab-item">2</div>
+				<div class="layui-tab-item">3</div>
+				<div class="layui-tab-item">4</div>
+			</div>
+		</div>
+		<script type="text/javascript" src="layui/layui.js"></script>
+		<script>
+			layui.use(['element'], function() {
+				var element = layui.element();
+
+				//获取hash来切换选项卡，假设当前地址的hash为lay-id对应的值
+				var layid = location.hash.replace(/^#tabtest=/, '');
+				element.tabChange('tabtest', layid);
+
+				//监听Tab切换，以改变地址hash值
+				element.on('tab(tabtest)', function() {
+					location.hash = 'tabtest=' + this.getAttribute('lay-id');
+				});
+			});
+		</script>
+	</body>
+
+</html>
